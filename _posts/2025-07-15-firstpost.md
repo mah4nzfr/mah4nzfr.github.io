@@ -3,7 +3,7 @@ title: HTB TwoMillion - Writeup
 date: 2025-07-15 13:53:00 +0330
 categories: [Writeup]
 tags: []
-description:
+description: My writeup of TwoMillion from Hack The Box 
 
 ---
 
@@ -182,5 +182,5 @@ And the flag
 5b5c6****************90556050597
 ```
 
-Done
+Done  
 Thanks for reading!
