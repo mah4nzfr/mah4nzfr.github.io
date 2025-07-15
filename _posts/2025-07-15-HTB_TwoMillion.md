@@ -182,5 +182,8 @@ And the flag
 5b5c6****************90556050597
 ```
 
-Done  
+DONE!
+
+![update](assets/img/twomillion_congrats.png)
+
 Thanks for reading!
