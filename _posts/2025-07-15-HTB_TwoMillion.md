@@ -7,7 +7,7 @@ description: My writeup of TwoMillion from Hack The Box
 
 ---
 
-![infocard](assets/img/twomillion_infocard.png)
+![infocard](assets/img/TwoMillion.png)
 
 ## - **Introduction**
 The initial process to get a foothold was to first find an invite code so that we can sign up, then we used an API endpoint to change our role to Administrator. After that, we find out that there is a Command Injection vulnerability in one of the admin endpoints and so we got a reverse shell from the box.
@@ -94,7 +94,7 @@ Though I have to say at first I didn't see it because the responses were empty. 
 ![update](assets/img/twomillion_cmd.png)
 
 ```shell
-$ nc -nvlp 9070         
+$ nc -nvlp 9070
 ```
 ```
 listening on [any] 9070 ...
