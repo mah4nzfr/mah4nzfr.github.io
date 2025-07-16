@@ -195,7 +195,7 @@ root@environment:/home/hish#
 root@environment:/home/hish# echo "my_root::0:0:root:/root:/bin/bash" >> /etc/passwd
 ```
 
->Note that we can't see the output of commands though you can do many things, I just added a `my_root` user.
+>Note that we can't see the output of commands. Though you can do many things, I just added a `my_root` user.
 {: .prompt-info }
 
 ```
