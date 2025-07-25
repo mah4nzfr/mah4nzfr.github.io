@@ -160,7 +160,7 @@ $ echo JDJhJDEwJGNWR0l5OVZNWFFkMGdNNWdpbkNtamVpMmtaUi9BQ01Na1Nzc3BiUnV0WVA1OEVCW
 $2a$10$cVGIy9VMXQd0gM5ginCmjei2kZR/ACMMkSsspbRutYP58EBZz/0QO   
 ```
 
-```
+```shell
 hashcat -m 3200 -a 0 -o cracked.txt hash2.txt /usr/share/wordlists/rockyou.txt
 ```
 
@@ -170,7 +170,7 @@ Here we can create repositories and after that we can run commands though not no
 
 ![](assets/img/artificial_restic.png)
 
-in the help output of restic we can see `backup` and `dump` commands and with those we can read files which we normaly don't have access to, for instance root.txt! but that like cheating and we need that root shell.
+in the help output of restic we can see `backup` and `dump` commands and with those we can read files which we normaly don't have access to, for instance root.txt! but that's like cheating and we need to get a shell.
 ![](assets/img/artificial_dump.png)
 looking back at the help screen a very juicy looking flag called `--password-command` caught my eye.
 
